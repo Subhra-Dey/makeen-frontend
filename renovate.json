@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommits", ":pinAllExceptPeerDependencies"],
+  "timezone": "Asia/Kolkata",
+  "schedule": ["before 7am on monday"],
+  "minimumReleaseAge": "14 days",
+  "vulnerabilityAlerts": { "enabled": true, "minimumReleaseAge": null },
+  "semanticCommitScope": "web",
+  "packageRules": [
+    { "matchUpdateTypes": ["major"], "dependencyDashboardApproval": true },
+    { "matchDepNames": ["node"], "allowedVersions": "<25", "description": "Node 24 LTS" },
+    { "matchPackageNames": ["@types/node"], "allowedVersions": "<25" },
+    {
+      "matchPackageNames": ["next", "eslint-config-next", "@next/**"],
+      "groupName": "next"
+    }
+  ]
+}

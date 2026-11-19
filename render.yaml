@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: makeen-frontend
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: PORT
+        value: 10000
+      - key: API_INTERNAL_URL
+        # Set to your deployed backend URL: https://makeen-backend.onrender.com
+        sync: false

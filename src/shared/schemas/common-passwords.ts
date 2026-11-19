@@ -1,0 +1,127 @@
+// MAKEEN domain contract — identical copy in api/src/shared and web/src/shared.
+// Edit both copies together; CI (contract.yml) fails if they differ. See DECISIONS D-49.
+
+/**
+ * The most common passwords (from public breach-frequency lists), plus obvious local variants.
+ * Rejected regardless of length (SEC-1). Compared case-insensitively, ignoring a trailing
+ * “!”, “@” or digits run so “Password123!” is caught too.
+ */
+const COMMON = [
+  '123456',
+  '12345678',
+  '123456789',
+  '1234567890',
+  '12345',
+  '1234567',
+  '111111',
+  '000000',
+  '123123',
+  '654321',
+  '666666',
+  '888888',
+  '987654321',
+  '11111111',
+  '00000000',
+  '112233',
+  'password',
+  'passw0rd',
+  'p@ssw0rd',
+  'p@ssword',
+  'password1',
+  'qwerty',
+  'qwerty123',
+  'qwertyuiop',
+  'asdfghjkl',
+  'zxcvbnm',
+  '1q2w3e4r',
+  '1qaz2wsx',
+  'qazwsx',
+  'abc123',
+  'abcd1234',
+  'iloveyou',
+  'admin',
+  'admin123',
+  'administrator',
+  'welcome',
+  'welcome1',
+  'welcome123',
+  'letmein',
+  'monkey',
+  'dragon',
+  'football',
+  'baseball',
+  'cricket',
+  'sunshine',
+  'princess',
+  'master',
+  'shadow',
+  'superman',
+  'batman',
+  'trustno1',
+  'whatever',
+  'secret',
+  'login',
+  'changeme',
+  'default',
+  'test1234',
+  'testtest',
+  'guest',
+  'india',
+  'india123',
+  'bharat',
+  'mumbai',
+  'delhi',
+  'chennai',
+  'bangalore',
+  'kolkata',
+  'hyderabad',
+  'jaimatadi',
+  'omsairam',
+  'krishna',
+  'ganesh',
+  'sairam',
+  'makeen',
+  'makeenenergy',
+  'makeen123',
+  'energy',
+  'lpg',
+  'hpcl',
+  'bpcl',
+  'iocl',
+  'cpcl',
+  'indane',
+  'bharatgas',
+  'hpgas',
+  'plant',
+  'plant123',
+  'facility',
+  'manager',
+  'operator',
+  'safety',
+  'company',
+  'office',
+  'computer',
+  'internet',
+  'january',
+  'october',
+  'summer',
+  'winter',
+  'monday',
+  'abcdefgh',
+  'aaaaaaaa',
+  'asdf1234',
+];
+
+const SET = new Set(COMMON);
+
+export function isCommonPassword(password: string): boolean {
+  const p = password.trim().toLowerCase();
+  if (SET.has(p)) return true;
+  const stripped = p
+    .replace(/[!@#$.]+$/, '')
+    .replace(/\d+$/, '')
+    .replace(/[!@#$.]+$/, '');
+  if (stripped.length > 0 && SET.has(stripped)) return true;
+  // One repeated character, e.g. "aaaaaaaa", "11111111".
+  return /^(.)\1+$/.test(p);
+}

@@ -1,0 +1,78 @@
+{
+  "$description": "MAKEEN FM Portal design tokens — extracted from docs/mockup/MAKEEN_FM_Portal_Demo.html (approved mockup). Source of truth for Tailwind theme.",
+  "font": {
+    "body": "Inter (400, 500, 600, 700)",
+    "heading": "Plus Jakarta Sans (600, 700)",
+    "numeric": "font-variant-numeric: tabular-nums for every number column"
+  },
+  "color": {
+    "navy": "#0D2B45",
+    "navy-hover": "#163E5E",
+    "sidebar-from": "#0F3A57",
+    "sidebar-to": "#0C2F49",
+    "sidebar-text": "#D3DFEA",
+    "sidebar-muted": "#7F98AE",
+    "teal": "#1B9AA0",
+    "teal-dark": "#13898E",
+    "teal-light": "#E2F4F3",
+    "teal-accent": "#3CC6C0",
+    "teal-ink": "#117A7F",
+    "teal-ink-hover": "#0E6E72",
+    "placeholder": "#6B7686",
+    "$teal-ink-note": "teal-ink: teal for text and for fills under white text — the brand teal #1B9AA0 is 3.4:1 on white, below WCAG AA 4.5:1 (D-80). Brand teal stays for borders, bars, icons and focus rings.",
+    "bg": "#F2F6F9",
+    "surface": "#FFFFFF",
+    "line": "#E2E9EF",
+    "line-soft": "#EEF2F6",
+    "text": "#0D2B45",
+    "muted": "#4A5B6E",
+    "input-border": "#D3DEE6",
+    "table-head-bg": "#F1F5F9",
+    "danger": "#D9534F",
+    "danger-text": "#B4231A",
+    "warning": "#E59A2F",
+    "badge-count": "#E5484D"
+  },
+  "status": {
+    "draft": { "pill-bg": "#E8EDF2", "pill-fg": "#3E5266", "row": "#F6F8FA" },
+    "pending": { "pill-bg": "#FFEFD6", "pill-fg": "#9A5800", "row": "#FFF9EE" },
+    "approved": { "pill-bg": "#DDF3EF", "pill-fg": "#0B7A6F", "row": "#F0FAF8" },
+    "returned": { "pill-bg": "#FDE3E1", "pill-fg": "#B4231A", "row": "#FEF3F2" },
+    "partial": { "pill-bg": "#E8EDF2", "pill-fg": "#3E5266", "row": "#F6F8FA" },
+    "info": { "pill-bg": "#DDEFF8", "pill-fg": "#0B5E87" },
+    "neutral": { "pill-bg": "#EEF1F4", "pill-fg": "#4A5B6E" }
+  },
+  "kpiTile": {
+    "teal": { "bg": "#E2F4F3", "fg": "#13898E", "bar": "#1B9AA0" },
+    "amber": { "bg": "#FFF1DD", "fg": "#B76A00", "bar": "#E59A2F" },
+    "red": { "bg": "#FDE8E7", "fg": "#C0362C", "bar": "#D9534F" },
+    "slate": { "bg": "#EAEFF4", "fg": "#4A5B6E", "bar": "#8394A8" }
+  },
+  "chart": ["#1B9AA0", "#0D2B45", "#E8792B", "#5CC3C0", "#8394A8"],
+  "radius": {
+    "card": "14px",
+    "input": "10px",
+    "button": "10px",
+    "pill": "999px",
+    "auth-input": "12px"
+  },
+  "size": {
+    "sidebar": "264px",
+    "sidebar-rail": "84px",
+    "topbar": "76px",
+    "topbar-mobile": "64px",
+    "input-height": "44px",
+    "button-height": "42px",
+    "button-sm": "34px",
+    "auth-input": "56px",
+    "kpi-icon": "62px",
+    "touch-min": "44px",
+    "page-title": "38px (28px mobile)",
+    "content-max": "1680px"
+  },
+  "shadow": {
+    "card": "0 1px 2px rgba(13,43,69,.04), 0 6px 18px rgba(13,43,69,.04)",
+    "nav-active": "0 6px 16px rgba(27,154,160,.28)"
+  },
+  "breakpoints": { "mobile-drawer": "< 900px", "rail-optional": "900–1279px", "full": ">= 1280px" }
+}

@@ -1,0 +1,56 @@
+name: Web CI
+
+# Written for web/ as its own repository root (GitHub reads .github/ only at the repo root).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: web-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NEXT_TELEMETRY_DISABLED: '1'
+
+jobs:
+  verify:
+    name: lint · typecheck · test · build · audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: Browser tests (screens at 1440 / 1024 / 768 / 390, WCAG 2.2 AA, behaviour)
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+      - name: Keep screenshots and traces
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: playwright-results
+          path: test-results/
+          retention-days: 14
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+
+  docker:
+    name: Docker image
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: docker build -t makeen-web:${{ github.sha }} .

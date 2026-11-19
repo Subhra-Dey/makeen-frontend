@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens — mirror of ./design-tokens.json (web's copy of docs/brand/design-tokens.json,
+ * extracted from the approved mockup).
+ * `src/styles/tokens.test.ts` fails if a token colour is missing here.
+ */
+@theme {
+  /* Fonts (next/font variables set on <html>) */
+  --font-sans: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: var(--font-jakarta), var(--font-inter), system-ui, sans-serif;
+
+  /* Brand */
+  --color-navy: #0d2b45;
+  --color-navy-hover: #163e5e;
+  --color-sidebar-from: #0f3a57;
+  --color-sidebar-to: #0c2f49;
+  --color-sidebar-text: #d3dfea;
+  --color-sidebar-muted: #7f98ae;
+  --color-teal: #1b9aa0;
+  --color-teal-dark: #13898e;
+  --color-teal-light: #e2f4f3;
+  --color-teal-accent: #3cc6c0;
+  /* Accessible teal for text and white-on-teal fills (WCAG AA 4.5:1 — D-80). */
+  --color-teal-ink: #117a7f;
+  --color-teal-ink-hover: #0e6e72;
+  --color-placeholder: #6b7686;
+
+  /* Surfaces & text */
+  --color-bg: #f2f6f9;
+  --color-surface: #ffffff;
+  --color-line: #e2e9ef;
+  --color-line-soft: #eef2f6;
+  --color-text: #0d2b45;
+  --color-muted: #4a5b6e;
+  --color-input-border: #d3dee6;
+  --color-table-head: #f1f5f9;
+  --color-danger: #d9534f;
+  --color-danger-text: #b4231a;
+  --color-warning: #e59a2f;
+  --color-badge-count: #e5484d;
+
+  /* Status pills & row tints */
+  --color-draft-bg: #e8edf2;
+  --color-draft-fg: #3e5266;
+  --color-draft-row: #f6f8fa;
+  --color-pending-bg: #ffefd6;
+  --color-pending-fg: #9a5800;
+  --color-pending-row: #fff9ee;
+  --color-approved-bg: #ddf3ef;
+  --color-approved-fg: #0b7a6f;
+  --color-approved-row: #f0faf8;
+  --color-returned-bg: #fde3e1;
+  --color-returned-fg: #b4231a;
+  --color-returned-row: #fef3f2;
+  --color-info-bg: #ddeff8;
+  --color-info-fg: #0b5e87;
+  --color-neutral-bg: #eef1f4;
+  --color-neutral-fg: #4a5b6e;
+
+  /* KPI tiles */
+  --color-kpi-teal-bg: #e2f4f3;
+  --color-kpi-teal-fg: #13898e;
+  --color-kpi-teal-bar: #1b9aa0;
+  --color-kpi-amber-bg: #fff1dd;
+  --color-kpi-amber-fg: #b76a00;
+  --color-kpi-amber-bar: #e59a2f;
+  --color-kpi-red-bg: #fde8e7;
+  --color-kpi-red-fg: #c0362c;
+  --color-kpi-red-bar: #d9534f;
+  --color-kpi-slate-bg: #eaeff4;
+  --color-kpi-slate-fg: #4a5b6e;
+  --color-kpi-slate-bar: #8394a8;
+
+  /* Chart series */
+  --color-chart-1: #1b9aa0;
+  --color-chart-2: #0d2b45;
+  --color-chart-3: #e8792b;
+  --color-chart-4: #5cc3c0;
+  --color-chart-5: #8394a8;
+
+  /* Logo accents (from the mockup wordmark) */
+  --color-logo-energy: #2fb3b0;
+
+  /* Radii */
+  --radius-card: 14px;
+  --radius-input: 10px;
+  --radius-button: 10px;
+  --radius-auth-input: 12px;
+
+  /* Sizes */
+  --spacing-sidebar: 264px;
+  --spacing-sidebar-rail: 84px;
+  --spacing-topbar: 76px;
+  --spacing-topbar-mobile: 64px;
+  --spacing-input: 44px;
+  --spacing-button: 42px;
+  --spacing-button-sm: 34px;
+  --spacing-auth-input: 56px;
+  --spacing-kpi-icon: 62px;
+  --spacing-touch: 44px;
+  --container-content: 1680px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgba(13, 43, 69, 0.04), 0 6px 18px rgba(13, 43, 69, 0.04);
+  --shadow-nav-active: 0 6px 16px rgba(27, 154, 160, 0.28);
+
+  /* Breakpoints: drawer below 900px, full sidebar from 1280px */
+  --breakpoint-nav: 900px;
+  --breakpoint-wide: 1280px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+}
